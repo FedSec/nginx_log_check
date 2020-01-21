@@ -48,7 +48,7 @@ access_log=access
 #Determine if the log file exists
 num=$(ls ${access_dir}${access_log}* | wc -l) >/dev/null 2>&1
 if [ $num -eq 0 ]; then
-    echo '日志文件不存在'
+    echo 'Log file does not exist'
     exit 1
 fi
 echo -e "\n"
@@ -74,8 +74,8 @@ if [ $OS = 'None' ]; then
     elif command -v yum >/dev/null 2>&1; then
         OS='Centos'
     else
-        echo -e "\n不支持这个系统\n"
-        echo -e "已退出"
+        echo -e "\nDoes not support this system\n"
+        echo -e "Exited"
         exit 1
     fi
 fi
