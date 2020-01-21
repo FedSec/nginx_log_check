@@ -108,8 +108,8 @@ echo -e "\e[00;31m[+]SQL injection attack analysis\e[00m"
 
 #Exclude some useless alarms such as scanning css / js / png picture classes in SQL injection, and focus on filtering alarms with status code 200 or 500
 ag -a "xp_cmdshell|%20xor|%20and|%20AND|%20or|%20OR|select%20|%20and%201=1|%20and%201=2|%20from|%27exec|information_schema.tables|load_file|benchmark|substring|table_name|table_schema|%20where%20|%20union%20|%20UNION%20|concat\(|concat_ws\(|%20group%20|0x5f|0x7e|0x7c|0x27|%20limit|\bcurrent_user\b|%20LIMIT|version%28|version\(|database%28|database\(|user%28|user\(|%20extractvalue|%updatexml|rand\(0\)\*2|%20group%20by%20x|%20NULL%2C|sqlmap" ${access_dir}${access_log}* | ag -v '/\w+\.(?:js|css|html|jpg|jpeg|png|htm|swf)(?:\?| )' | awk '($9==200)||($9==500) {print $0}' >${outfile}/sql.log
-awk '{print "SQL注入攻击" NR"次"}' ${outfile}/sql.log | tail -n1
-echo "SQL注入 TOP 20 IP地址"
+awk '{print "SQL injection attack" NR"times"}' ${outfile}/sql.log | tail -n1
+echo "SQL injection TOP 20 IP address"
 ag -o '(?<=:)\d+\.\d+\.\d+\.\d+' ${outfile}/sql.log | sort | uniq -c | sort -nr | head -n 20 | tee -a ${outfile}/sql_top20.log
 
 # Focus on the from query, whether there is any pants removal behavior, and exclude scanning behavior
