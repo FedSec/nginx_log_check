@@ -1,24 +1,25 @@
 # nginx_log_check
-Nginx日志安全分析脚本
-### 功能
+Nginx log security analysis script
 
-* 统计Top 20 地址
-* SQL注入分析
-* 扫描器告警分析
-* 漏洞利用检测
-* 敏感路径访问
-* 文件包含攻击
+### Features
+
+* Statistics Top 20 Address
+* SQL injection analysis
+* Scanner alert analysis
+* Exploit detection
+* Sensitive path access
+* File contains attack
 * Webshell
-* 寻找响应长度的url Top 20
-* 寻找罕见的脚本文件访问
-* 寻找302跳转的脚本文件
+* Find URLs with response length Top 20
+* Looking for rare script file access
+* Find script file for 302 jump
 
 ### Usage
-设置报告保存地址 outfile  
-设置日志分析目录 access_dir  
-设置日志名称 access_log  
+Set report save address outfile
+Set the log analysis access_dir  
+Set log name access_log  
 ./nginx_check.sh
 
-### 参考
+### reference
 nmgxy  
 klionsec  
